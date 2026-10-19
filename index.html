@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dotty's World ♡</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --pink: #F8DDE3;
+
+            --pink-dark: #EFBCC8;
+
+            --beige: #F3E7D7;
+
+            --cream: #FFF9F3;
+
+            --mocha: #C6A18D;
+
+            --brown: #795548;
+
+            --chocolate: #5B382B;
+
+        }
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        html {
+
+            scroll-behavior: smooth;
+
+            scroll-padding-top: 100px;
+
+        }
+
+        body {
+
+            font-family: 'Quicksand', sans-serif;
+
+            background: var(--cream);
+
+            color: var(--chocolate);
+
+            overflow-x: hidden;
+
+        }
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+        /* Navigation */
+        .main-nav {
+
+            width: 100%;
+
+            min-height: 85px;
+
+            padding: 22px 8%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 40px;
+
+            background: var(--cream);
+
+            border-bottom: 1px solid #EAD9CC;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+        .logo {
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 30px;
+
+            color: var(--brown);
+
+            letter-spacing: 2px;
+
+            flex-shrink: 0;
+
+        }
+
+        .logo span {
+
+            color: #D995A7;
+
+        }
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 55px;
+
+        }
+
+        .nav-link {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: var(--brown);
+
+            white-space: nowrap;
+
+            transition: color 0.3s ease;
+
+        }
+
+        .nav-link:hover,
+
+        .nav-link.active {
+
+            color: #B96F83;
+
+        }
+        /* Hero Section */
+        .hero {
+
+            min-height: 85vh;
+
+            padding: 70px 8%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            background-color: var(--pink);
+
+            background-image: radial-gradient(
+
+                var(--mocha) 1.8px,
+
+                transparent 2px
+
+            );
+
+            background-size: 32px 32px;
+
+        }
+
+        .hero-content {
+
+            max-width: 550px;
+
+        }
+
+        /* Dotty's circular portrait */
+        .dotty-image-wrap {
+            width: 190px;
+            height: 190px;
+            margin: 0 auto 28px;
+            padding: 8px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 3px solid var(--pink-dark);
+            box-shadow: 0 8px 24px rgba(91, 56, 43, 0.12);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .dotty-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .dotty-image-wrap:hover {
+            transform: translateY(-4px);
+        }
+
+
+        .mini-title {
+
+            display: inline-block;
+
+            background: var(--cream);
+
+            color: var(--brown);
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 24px;
+
+        }
+
+        h1 {
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: clamp(45px, 7vw, 76px);
+
+            line-height: 1.15;
+
+            color: var(--chocolate);
+
+            margin-bottom: 20px;
+
+        }
+
+        .subtitle {
+
+            font-size: 17px;
+
+            color: var(--brown);
+
+            letter-spacing: 1px;
+
+            margin-bottom: 12px;
+
+        }
+
+        .description {
+
+            font-size: 14px;
+
+            line-height: 2;
+
+            color: var(--brown);
+
+            max-width: 390px;
+
+            margin: 0 auto 28px;
+
+        }
+        /* Enter Button */
+        .enter-button {
+
+            display: inline-block;
+
+            background: var(--brown);
+
+            color: var(--cream);
+
+            padding: 15px 32px;
+
+            border: 2px solid var(--brown);
+
+            border-radius: 40px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            transition: 0.3s;
+
+        }
+
+        .enter-button:hover {
+
+            background: var(--cream);
+
+            color: var(--brown);
+
+            transform: translateY(-4px);
+
+        }
+
+        .heart {
+
+            color: #B96F83;
+
+            margin-top: 22px;
+
+            font-size: 20px;
+
+        }
+        /* Decorative Divider */
+        .decorative-line {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            padding: 20px;
+
+            color: var(--mocha);
+
+            letter-spacing: 5px;
+
+        }
+        /* Welcome Section */
+        .welcome-section {
+
+            padding: 90px 8%;
+
+            text-align: center;
+
+            background: var(--cream);
+
+        }
+
+        .section-label {
+
+            color: #B96F83;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+        }
+
+        .welcome-section h2 {
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: clamp(30px, 4vw, 44px);
+
+            margin: 15px 0;
+
+        }
+
+        .welcome-section p {
+
+            max-width: 530px;
+
+            margin: auto;
+
+            font-size: 15px;
+
+            line-height: 2;
+
+            color: var(--brown);
+
+        }
+        /* Brand Values */
+        .values {
+
+            padding: 30px 8% 80px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            gap: 22px;
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            scroll-margin-top: 100px;
+
+        }
+
+        .value-card {
+
+            background: var(--beige);
+
+            border-radius: 22px;
+
+            padding: 30px 18px;
+
+            text-align: center;
+
+            transition: transform 0.3s ease;
+
+        }
+
+        .value-card:nth-child(2) {
+
+            background: var(--pink);
+
+        }
+
+        .value-card:nth-child(3) {
+
+            background: #E8D5C8;
+
+        }
+
+        .value-card:hover {
+
+            transform: translateY(-6px);
+
+        }
+
+        .value-icon {
+
+            font-size: 32px;
+
+            margin-bottom: 12px;
+
+        }
+
+        .value-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+
+        }
+
+        .value-card p {
+
+            color: var(--brown);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+        }
+        /* Footer */
+        footer {
+
+            background: var(--chocolate);
+
+            color: var(--cream);
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            scroll-margin-top: 100px;
+
+        }
+
+        .footer-logo {
+
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 28px;
+
+            letter-spacing: 3px;
+
+        }
+
+        footer p {
+
+            font-size: 12px;
+
+            margin-top: 8px;
+
+            opacity: 0.8;
+
+        }
+
+        .footer-heart {
+
+            color: var(--pink-dark);
+
+        }
+        /* Mobile */
+        @media (max-width: 760px) {
+
+            .main-nav {
+
+                padding: 18px 5%;
+
+                flex-direction: column;
+
+                gap: 22px;
+
+            }
+
+            .logo {
+
+                font-size: 29px;
+
+            }
+
+            .nav-links {
+
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+                gap: 20px 30px;
+
+            }
+
+            .nav-link {
+
+                font-size: 13px;
+
+            }
+
+            .hero {
+
+                min-height: auto;
+
+                padding: 80px 6%;
+
+            }
+
+            .dotty-image-wrap {
+                width: 165px;
+                height: 165px;
+                margin-bottom: 24px;
+            }
+
+
+            .mini-title {
+
+                font-size: 10px;
+
+                letter-spacing: 1.5px;
+
+            }
+
+            .description {
+
+                font-size: 13px;
+
+            }
+
+            .values {
+
+                grid-template-columns: 1fr;
+
+                max-width: 420px;
+
+                padding-left: 7%;
+
+                padding-right: 7%;
+
+            }
+
+            .welcome-section {
+
+                padding: 65px 7%;
+
+            }
+
+        }
+
+        @media (max-width: 380px) {
+
+            .nav-links {
+
+                gap: 16px 20px;
+
+            }
+
+            .nav-link {
+
+                font-size: 12px;
+
+            }
+
+            h1 {
+
+                font-size: 43px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+<nav class="main-nav">
+
+    <a href="index.html" class="logo">D<span>o</span>tty.</a>
+
+    <div class="nav-links">
+
+        <a href="index.html" class="nav-link active">Home</a>
+
+        <a href="shop.html" class="nav-link">Shop</a>
+
+        <a href="product.html" class="nav-link">Product</a>
+
+        <a href="cart.html" class="nav-link">Cart ♡</a>
+
+        <a href="about.html" class="nav-link">About & Contact</a>
+
+    </div>
+
+</nav>
+    <!-- Hero -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            
+            <div class="dotty-image-wrap">
+                <img
+                    src="images/dotty.jpg"
+                    alt="Dotty"
+                    class="dotty-image"
+                    width="190"
+                    height="190"
+                >
+            </div>
+
+<div class="mini-title">
+
+                A LITTLE WORLD OF HAPPINESS
+
+            </div>
+
+            <h1>Dotty's World</h1>
+
+            <p class="subtitle">
+
+                Made of Dots &amp; Love
+
+            </p>
+
+            <p class="description">
+
+                A sweet little corner filled with
+
+                lovely details, soft colors and
+
+                little things that make you smile.
+
+            </p>
+
+            <a href="#welcome" class="enter-button">
+
+                ENTER MY WORLD ♡
+
+            </a>
+
+            <div class="heart">
+
+                ♥ &nbsp; ♥ &nbsp; ♥
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Decorative Divider -->
+    <div class="decorative-line">
+
+        · · · ♡ · · ·
+
+    </div>
+    <!-- Welcome -->
+    <section class="welcome-section" id="welcome">
+
+        <span class="section-label">
+
+            WELCOME, LOVELY
+
+        </span>
+
+        <h2>A little world, made with love.</h2>
+
+        <p>
+
+            Welcome to Dotty's World, where every
+
+            little detail has a story. A place inspired
+
+            by soft pinks, warm mocha, sweet dots
+
+            and all the lovely things in life.
+
+        </p>
+
+    </section>
+    <!-- Brand Values -->
+    <section class="values" id="values">
+
+        <div class="value-card">
+
+            <div class="value-icon">♡</div>
+
+            <h3>Sweet Details</h3>
+
+            <p>
+
+                Little details that make
+
+                everything feel special.
+
+            </p>
+
+        </div>
+
+        <div class="value-card">
+
+            <div class="value-icon">♡</div>
+
+            <h3>Made with Love</h3>
+
+            <p>
+
+                Every little thing begins
+
+                with a little love.
+
+            </p>
+
+        </div>
+
+        <div class="value-card">
+
+            <div class="value-icon">☕</div>
+
+            <h3>Soft &amp; Cozy</h3>
+
+            <p>
+
+                Pink, beige and mocha
+
+                make our favorite world.
+
+            </p>
+
+        </div>
+
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+
+        <div class="footer-logo">
+
+            Dotty's World
+
+        </div>
+
+        <p>
+
+            Made of dots &amp; love
+
+            <span class="footer-heart">♡</span>
+
+        </p>
+
+        <p>
+
+            © 2026 Dotty. All rights reserved.
+
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+ 

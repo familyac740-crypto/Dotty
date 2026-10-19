@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product | Dotty's World ♡</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #F8DDE3;
+            --pink-dark: #EFBCC8;
+            --beige: #F3E7D7;
+            --cream: #FFF9F3;
+            --mocha: #C6A18D;
+            --brown: #795548;
+            --chocolate: #5B382B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--cream);
+            color: var(--chocolate);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* Navigation */
+
+        .main-nav {
+            width: 100%;
+            min-height: 85px;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 35px;
+            background: var(--cream);
+            border-bottom: 1px solid #EAD9CC;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 30px;
+            color: var(--brown);
+            letter-spacing: 2px;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: #D995A7;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--brown);
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #B96F83;
+        }
+
+        /* Page Header */
+
+        .page-header {
+            padding: 48px 8%;
+            text-align: center;
+            background-color: var(--pink);
+            background-image: radial-gradient(
+                var(--mocha) 1.8px,
+                transparent 2px
+            );
+            background-size: 32px 32px;
+        }
+
+        .mini-title {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--brown);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .page-header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(38px, 6vw, 58px);
+        }
+
+        .page-header p {
+            margin-top: 10px;
+            color: var(--brown);
+            font-size: 14px;
+        }
+
+        /* Breadcrumb */
+
+        .breadcrumb {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 25px 8%;
+            font-size: 12px;
+            color: var(--brown);
+        }
+
+        .breadcrumb a:hover {
+            color: #B96F83;
+        }
+
+        .breadcrumb span {
+            color: var(--mocha);
+            margin: 0 8px;
+        }
+
+        /* Product Details */
+
+        .product-section {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 15px 8% 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .product-gallery {
+            min-width: 0;
+        }
+
+        .main-image {
+            position: relative;
+            height: 480px;
+            background: var(--beige);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-label {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            padding: 9px 14px;
+            border-radius: 25px;
+            background: var(--pink);
+            color: var(--brown);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            width: 78px;
+            height: 78px;
+            border: 2px solid transparent;
+            border-radius: 13px;
+            overflow: hidden;
+            padding: 0;
+            background: var(--beige);
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail.active,
+        .thumbnail:hover {
+            border-color: #B96F83;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Product Information */
+
+        .product-details {
+            padding-top: 10px;
+        }
+
+        .product-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #B96F83;
+            text-transform: uppercase;
+        }
+
+        .product-details h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(34px, 4vw, 45px);
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .rating {
+            color: #B96F83;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .rating span {
+            color: var(--brown);
+            font-size: 12px;
+            margin-left: 7px;
+        }
+
+        .price {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--chocolate);
+        }
+
+        .price-note {
+            margin-top: 6px;
+            color: var(--brown);
+            font-size: 11px;
+        }
+
+        .product-description {
+            margin: 25px 0;
+            color: var(--brown);
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .detail-divider {
+            border: 0;
+            border-top: 1px solid #EAD9CC;
+            margin: 24px 0;
+        }
+
+        .detail-heading {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .color-option {
+            width: 31px;
+            height: 31px;
+            border: 2px solid var(--cream);
+            outline: 1px solid #D9C5B8;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: outline-color 0.3s;
+        }
+
+        .color-option.active {
+            outline: 2px solid var(--brown);
+        }
+
+        .color-pink {
+            background: #EFBCC8;
+        }
+
+        .color-beige {
+            background: #DCC4A8;
+        }
+
+        .color-brown {
+            background: #795548;
+        }
+
+        .quantity-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #DCC9BD;
+            border-radius: 30px;
+            overflow: hidden;
+            height: 43px;
+        }
+
+        .quantity-control button {
+            width: 40px;
+            height: 100%;
+            background: transparent;
+            border: none;
+            color: var(--brown);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .quantity-control button:hover {
+            background: var(--pink);
+        }
+
+        .quantity-control input {
+            width: 35px;
+            border: none;
+            background: transparent;
+            text-align: center;
+            color: var(--chocolate);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            outline: none;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--brown);
+            border-radius: 35px;
+            background: var(--brown);
+            color: var(--cream);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .wishlist-btn {
+            width: 100%;
+            margin-top: 12px;
+            padding: 14px 20px;
+            border: 1px solid var(--pink-dark);
+            border-radius: 35px;
+            background: transparent;
+            color: var(--brown);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .wishlist-btn:hover,
+        .wishlist-btn.liked {
+            background: var(--pink);
+            color: #B96F83;
+        }
+
+        .product-perks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .perk {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--brown);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .perk-icon {
+            font-size: 20px;
+        }
+
+        /* Our Promise */
+
+        .promise-section {
+            background: var(--beige);
+            padding: 45px 8%;
+            text-align: center;
+        }
+
+        .promise-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .promise-section p {
+            color: var(--brown);
+            font-size: 13px;
+            line-height: 2;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+
+        footer {
+            background: var(--chocolate);
+            color: var(--cream);
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            letter-spacing: 3px;
+        }
+
+        footer p {
+            font-size: 12px;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        .footer-heart {
+            color: var(--pink-dark);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+            .main-nav {
+                padding-left: 5%;
+                padding-right: 5%;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .product-section {
+                gap: 35px;
+            }
+
+            .main-image {
+                height: 390px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .main-nav {
+                padding: 18px 5%;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px 23px;
+            }
+
+            .nav-link {
+                font-size: 12px;
+            }
+
+            .page-header {
+                padding: 45px 6%;
+            }
+
+            .breadcrumb {
+                padding: 22px 6%;
+            }
+
+            .product-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 10px 6% 60px;
+            }
+
+            .main-image {
+                height: min(105vw, 440px);
+            }
+
+            .product-details {
+                padding-top: 5px;
+            }
+
+            .product-details h2 {
+                font-size: 36px;
+            }
+
+            .product-perks {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 14px 17px;
+            }
+
+            .nav-link {
+                font-size: 11px;
+            }
+
+            .product-perks {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="main-nav">
+        <a href="index.html" class="logo">D<span>o</span>tty.</a>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="product.html" class="nav-link active">Product</a>
+            <a href="cart.html" class="nav-link">Cart ♡ <span id="cart-count"></span></a>
+            <a href="about.html" class="nav-link">About &amp; Contact</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+
+    <header class="page-header">
+        <div class="mini-title">A LITTLE TREASURE FOR YOU</div>
+        <h1>Product Details ♡</h1>
+        <p>Every little detail is made to bring you joy.</p>
+    </header>
+
+    <!-- Breadcrumb -->
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>♡</span>
+        <a href="shop.html">Shop</a>
+        <span>♡</span>
+        <span>Sweet Bracelet</span>
+    </div>
+
+    <!-- Product -->
+
+    <main class="product-section">
+
+        <!-- Gallery -->
+
+        <section class="product-gallery" aria-label="Product images">
+
+            <div class="main-image">
+                <img
+                    id="main-product-image"
+                    src="images/bracelet.jpg"
+                    alt="Sweet Bracelet"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1576021182211-9ea8dced3690?auto=format&fit=crop&w=900&q=80';"
+                >
+                <span class="image-label">MADE WITH LOVE ♡</span>
+            </div>
+
+            <div class="thumbnail-row">
+                <button class="thumbnail active" data-image="images/bracelet.jpg" aria-label="View bracelet image 1">
+                    <img src="images/bracelet.jpg" alt="Bracelet view 1"
+                         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1576021182211-9ea8dced3690?auto=format&fit=crop&w=200&q=80';">
+                </button>
+
+                <button class="thumbnail" data-image="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80" aria-label="View bracelet image 2">
+                    <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=200&q=80" alt="Jewelry detail">
+                </button>
+
+                <button class="thumbnail" data-image="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80" aria-label="View bracelet image 3">
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=200&q=80" alt="Jewelry collection">
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Details -->
+
+        <section class="product-details">
+
+            <span class="product-label">Accessories Collection</span>
+
+            <h2 id="product-name">Sweet Bracelet</h2>
+
+            <div class="rating">
+                ★★★★★
+                <span>A little favorite ♡</span>
+            </div>
+
+            <div class="price" id="product-price">OMR 4.500</div>
+            <p class="price-note">Price shown in Omani Rial (OMR).</p>
+
+            <p class="product-description" id="product-description">
+                A delicate little bracelet to add a touch of sweetness
+                to your everyday look. Simple, lovely and made for
+                the little moments that make you smile.
+            </p>
+
+            <hr class="detail-divider">
+
+            <p class="detail-heading">Choose your favorite color ♡</p>
+
+            <div class="color-options">
+                <button class="color-option color-pink active"
+                    data-color="Pink" aria-label="Pink color"
+                    aria-pressed="true"></button>
+
+                <button class="color-option color-beige"
+                    data-color="Beige" aria-label="Beige color"
+                    aria-pressed="false"></button>
+
+                <button class="color-option color-brown"
+                    data-color="Mocha" aria-label="Mocha color"
+                    aria-pressed="false"></button>
+            </div>
+
+            <hr class="detail-divider">
+
+            <p class="detail-heading">Quantity</p>
+
+            <div class="quantity-row">
+                <div class="quantity-control">
+                    <button type="button" id="decrease" aria-label="Decrease quantity">−</button>
+                    <input id="quantity" type="number" value="1" min="1" max="99" aria-label="Quantity">
+                    <button type="button" id="increase" aria-label="Increase quantity">+</button>
+                </div>
+            </div>
+
+            <button type="button" class="add-cart-btn" id="add-to-cart">
+                ADD TO CART ♡
+            </button>
+
+            <button type="button" class="wishlist-btn" id="wishlist">
+                ♡ Add to Wishlist
+            </button>
+
+            <div class="product-perks">
+                <div class="perk">
+                    <span class="perk-icon">🎀</span>
+                    <span>Pretty little packaging</span>
+                </div>
+
+                <div class="perk">
+                    <span class="perk-icon">♡</span>
+                    <span>Selected with love</span>
+                </div>
+
+                <div class="perk">
+                    <span class="perk-icon">☁</span>
+                    <span>Soft &amp; lovely details</span>
+                </div>
+
+                <div class="perk">
+                    <span class="perk-icon">✿</span>
+                    <span>Made for happy moments</span>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Brand Promise -->
+
+    <section class="promise-section">
+        <h2>A Little Love in Every Detail.</h2>
+        <p>
+            At Dotty's World, we believe the smallest things
+            can bring the biggest smiles. Thank you for being
+            part of our little world ♡
+        </p>
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="footer-logo">Dotty's World</div>
+
+        <p>
+            Made of dots &amp; love
+            <span class="footer-heart">♡</span>
+        </p>
+
+        <p>© 2026 Dotty. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Quantity controls
+
+        const quantityInput = document.getElementById('quantity');
+
+        document.getElementById('decrease').addEventListener('click', () => {
+            const current = Number(quantityInput.value) || 1;
+            quantityInput.value = Math.max(1, current - 1);
+        });
+
+        document.getElementById('increase').addEventListener('click', () => {
+            const current = Number(quantityInput.value) || 1;
+            quantityInput.value = Math.min(99, current + 1);
+        });
+
+        quantityInput.addEventListener('change', () => {
+            const current = Number(quantityInput.value) || 1;
+            quantityInput.value = Math.min(99, Math.max(1, current));
+        });
+
+        // Product image thumbnails
+
+        const mainImage = document.getElementById('main-product-image');
+
+        document.querySelectorAll('.thumbnail').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.thumbnail').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                button.classList.add('active');
+                mainImage.src = button.dataset.image;
+            });
+        });
+
+        // Color selection
+
+        let selectedColor = 'Pink';
+
+        document.querySelectorAll('.color-option').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.color-option').forEach(item => {
+                    item.classList.remove('active');
+                    item.setAttribute('aria-pressed', 'false');
+                });
+
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+                selectedColor = button.dataset.color;
+            });
+        });
+
+        // Cart shared with shop.html
+
+        function getCart() {
+            try {
+                const cart = JSON.parse(
+                    localStorage.getItem('dottyCart') || '[]'
+                );
+
+                return Array.isArray(cart) ? cart : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function updateCartCount() {
+            const total = getCart().reduce((sum, item) => {
+                return sum + (Number(item.quantity) || 0);
+            }, 0);
+
+            document.getElementById('cart-count').textContent =
+                total > 0 ? '(' + total + ')' : '';
+        }
+
+        function addToCart(name, price, quantity, color) {
+            const cart = getCart();
+
+            const existing = cart.find(item =>
+                item.name === name && (item.color || 'Pink') === color
+            );
+
+            if (existing) {
+                existing.quantity =
+                    (Number(existing.quantity) || 0) + quantity;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: quantity,
+                    color: color
+                });
+            }
+
+            localStorage.setItem('dottyCart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        document.getElementById('add-to-cart').addEventListener('click', () => {
+            const name = document.getElementById('product-name').textContent;
+            const priceText = document.getElementById('product-price').textContent;
+            const price = Number(priceText.replace('OMR', '').trim());
+            const quantity = Math.max(
+                1,
+                Math.min(99, Number(quantityInput.value) || 1)
+            );
+
+            addToCart(name, price, quantity, selectedColor);
+
+            const button = document.getElementById('add-to-cart');
+            const originalText = 'ADD TO CART ♡';
+
+            button.textContent = 'ADDED TO CART ♡';
+
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 1500);
+        });
+
+        // Wishlist toggle
+
+        document.getElementById('wishlist').addEventListener('click', event => {
+            const button = event.currentTarget;
+            const liked = button.classList.toggle('liked');
+
+            button.textContent = liked
+                ? '♥ Added to Wishlist'
+                : '♡ Add to Wishlist';
+        });
+
+        updateCartCount();
+    </script>
+
+</body>
+</html>

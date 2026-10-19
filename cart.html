@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart & Wishlist | Dotty's World ♡</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #F8DDE3;
+            --pink-dark: #EFBCC8;
+            --beige: #F3E7D7;
+            --cream: #FFF9F3;
+            --mocha: #C6A18D;
+            --brown: #795548;
+            --chocolate: #5B382B;
+            --rose: #B96F83;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--cream);
+            color: var(--chocolate);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--rose);
+            outline-offset: 3px;
+        }
+
+        /* Navigation */
+
+        .main-nav {
+            width: 100%;
+            min-height: 85px;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 35px;
+            background: var(--cream);
+            border-bottom: 1px solid #EAD9CC;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 30px;
+            color: var(--brown);
+            letter-spacing: 2px;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: #D995A7;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--brown);
+            white-space: nowrap;
+            transition: color .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--rose);
+        }
+
+        /* Hero */
+
+        .page-hero {
+            padding: 60px 8%;
+            text-align: center;
+            background-color: var(--pink);
+            background-image: radial-gradient(
+                var(--mocha) 1.8px,
+                transparent 2px
+            );
+            background-size: 32px 32px;
+        }
+
+        .mini-title {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--brown);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .page-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(40px, 6vw, 62px);
+            font-weight: 400;
+        }
+
+        .page-hero p {
+            color: var(--brown);
+            font-size: 14px;
+            line-height: 1.9;
+            margin-top: 12px;
+        }
+
+        /* Page Layout */
+
+        .page-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 8% 85px;
+        }
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--rose);
+        }
+
+        .section-heading h2 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: 34px;
+            margin-top: 8px;
+        }
+
+        .section-heading p {
+            color: var(--brown);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-top: 7px;
+        }
+
+        /* Tabs */
+
+        .page-tabs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 38px;
+        }
+
+        .tab-btn {
+            padding: 12px 23px;
+            border-radius: 30px;
+            border: 1px solid var(--pink-dark);
+            background: transparent;
+            color: var(--brown);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: var(--brown);
+            color: var(--cream);
+            border-color: var(--brown);
+        }
+
+        .tab-panel[hidden] {
+            display: none !important;
+        }
+
+        /* Cart Layout */
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 310px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 17px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 115px minmax(0, 1fr);
+            gap: 20px;
+            padding: 17px;
+            border: 1px solid #EAD9CC;
+            border-radius: 19px;
+            background: #FFFFFF;
+        }
+
+        .item-image {
+            width: 115px;
+            height: 130px;
+            background: var(--beige);
+            border-radius: 13px;
+            overflow: hidden;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-content {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-category {
+            color: var(--rose);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .item-content h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: 21px;
+            margin: 7px 0;
+        }
+
+        .item-variant {
+            font-size: 12px;
+            color: var(--brown);
+        }
+
+        .item-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        .item-price {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .quantity-control {
+            height: 34px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #E4D1C5;
+            border-radius: 22px;
+            overflow: hidden;
+        }
+
+        .quantity-control button {
+            width: 29px;
+            height: 100%;
+            border: none;
+            background: transparent;
+            color: var(--brown);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quantity-control button:hover {
+            background: var(--pink);
+        }
+
+        .quantity-control span {
+            min-width: 23px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .text-action {
+            border: none;
+            background: transparent;
+            color: var(--rose);
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .text-action:hover {
+            text-decoration: underline;
+        }
+
+        /* Summary */
+
+        .summary-card {
+            background: var(--beige);
+            border-radius: 22px;
+            padding: 25px 22px;
+            position: sticky;
+            top: 115px;
+        }
+
+        .summary-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--brown);
+            font-size: 13px;
+            margin: 15px 0;
+        }
+
+        .summary-row strong {
+            color: var(--chocolate);
+            text-align: right;
+        }
+
+        .summary-divider {
+            border: none;
+            border-top: 1px solid #DCC5B6;
+            margin: 19px 0;
+        }
+
+        .summary-total {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--chocolate);
+        }
+
+        .summary-note {
+            font-size: 11px;
+            color: var(--brown);
+            line-height: 1.8;
+            margin: 17px 0;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            width: 100%;
+            min-height: 47px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            padding: 12px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .primary-btn {
+            border: 2px solid var(--brown);
+            background: var(--brown);
+            color: var(--cream);
+        }
+
+        .primary-btn:hover {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .secondary-btn {
+            margin-top: 12px;
+            border: 1px solid var(--pink-dark);
+            background: transparent;
+            color: var(--brown);
+        }
+
+        .secondary-btn:hover {
+            background: var(--pink);
+        }
+
+        /* Empty State */
+
+        .empty-state {
+            padding: 45px 20px;
+            text-align: center;
+            border: 1px dashed var(--pink-dark);
+            border-radius: 22px;
+            background: #FFFFFF;
+        }
+
+        .empty-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .empty-state h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--brown);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .empty-state .primary-btn {
+            width: auto;
+            display: inline-flex;
+            padding: 12px 25px;
+        }
+
+        /* Wishlist */
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .wishlist-card {
+            background: #FFFFFF;
+            border: 1px solid #EAD9CC;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform .3s, box-shadow .3s;
+        }
+
+        .wishlist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(91, 56, 43, .08);
+        }
+
+        .wishlist-image {
+            height: 220px;
+            position: relative;
+            background: var(--beige);
+        }
+
+        .wishlist-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-favorite {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--rose);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .wishlist-info {
+            padding: 17px;
+        }
+
+        .wishlist-info h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .wishlist-price {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .wishlist-info .primary-btn {
+            min-height: 42px;
+        }
+
+        .wishlist-info .secondary-btn {
+            min-height: 40px;
+            margin-top: 9px;
+        }
+
+        /* Footer */
+
+        footer {
+            background: var(--chocolate);
+            color: var(--cream);
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            letter-spacing: 3px;
+        }
+
+        footer p {
+            font-size: 12px;
+            margin-top: 8px;
+            opacity: .8;
+        }
+
+        .footer-heart {
+            color: var(--pink-dark);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 1000px) {
+            .main-nav {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .cart-layout {
+                grid-template-columns: minmax(0, 1fr) 270px;
+                gap: 20px;
+            }
+
+            .wishlist-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            .main-nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 18px 5%;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px 22px;
+            }
+
+            .nav-link {
+                font-size: 12px;
+            }
+
+            .page-hero {
+                padding: 45px 6%;
+            }
+
+            .page-container {
+                padding: 35px 5% 65px;
+            }
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
+            }
+
+            .cart-item {
+                grid-template-columns: 95px minmax(0, 1fr);
+                gap: 13px;
+                padding: 12px;
+            }
+
+            .item-image {
+                width: 95px;
+                height: 115px;
+            }
+
+            .item-content h3 {
+                font-size: 18px;
+            }
+
+            .item-bottom {
+                align-items: flex-start;
+            }
+
+            .wishlist-image {
+                height: 190px;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wishlist-image {
+                height: 250px;
+            }
+
+            .cart-item {
+                grid-template-columns: 78px minmax(0, 1fr);
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .item-image {
+                width: 78px;
+                height: 100px;
+            }
+
+            .item-actions {
+                gap: 8px;
+            }
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="main-nav">
+        <a href="index.html" class="logo">D<span>o</span>tty.</a>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <a href="product.html" class="nav-link">Product</a>
+            <a href="cart.html" class="nav-link active">
+                Cart ♡ <span id="nav-cart-count"></span>
+            </a>
+            <a href="about.html" class="nav-link">About &amp; Contact</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+
+    <header class="page-hero">
+        <div class="mini-title">A LITTLE LOVE IN EVERY ORDER</div>
+        <h1>My Little Basket ♡</h1>
+        <p>Your favorite little treasures, all in one place.</p>
+    </header>
+
+    <!-- Main -->
+
+    <main class="page-container">
+
+        <!-- Tabs -->
+
+        <div class="page-tabs" role="tablist" aria-label="Cart and wishlist">
+            <button class="tab-btn active" id="cart-tab"
+                    role="tab" aria-selected="true"
+                    aria-controls="cart-panel">
+                Shopping Cart ♡
+            </button>
+
+            <button class="tab-btn" id="wishlist-tab"
+                    role="tab" aria-selected="false"
+                    aria-controls="wishlist-panel">
+                My Wishlist ♡
+            </button>
+        </div>
+
+        <!-- Cart Panel -->
+
+        <section class="tab-panel" id="cart-panel"
+                 role="tabpanel" aria-labelledby="cart-tab">
+
+            <div class="section-heading">
+                <span class="section-label">YOUR LITTLE FINDS</span>
+                <h2>Shopping Cart</h2>
+                <p>Everything you love, ready for your next little treat.</p>
+            </div>
+
+            <div class="cart-layout">
+
+                <div id="cart-items" class="cart-items"></div>
+
+                <aside class="summary-card">
+                    <h3>Order Summary ♡</h3>
+
+                    <div class="summary-row">
+                        <span>Items</span>
+                        <strong id="summary-items">0</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <strong id="summary-subtotal">OMR 0.000</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <strong id="summary-shipping">Calculated later</strong>
+                    </div>
+
+                    <hr class="summary-divider">
+
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <strong id="summary-total">OMR 0.000</strong>
+                    </div>
+
+                    <p class="summary-note">
+                        Shipping fees are not included.
+                        This is a local demo cart and does not process payments.
+                    </p>
+
+                    <button class="primary-btn" id="checkout-btn">
+                        CONTINUE TO CHECKOUT ♡
+                    </button>
+
+                    <a href="shop.html" class="secondary-btn">
+                        Continue Shopping
+                    </a>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- Wishlist Panel -->
+
+        <section class="tab-panel" id="wishlist-panel"
+                 role="tabpanel" aria-labelledby="wishlist-tab" hidden>
+
+            <div class="section-heading">
+                <span class="section-label">YOUR FAVORITE LITTLE THINGS</span>
+                <h2>My Wishlist ♡</h2>
+                <p>Keep your favorite treasures close until you're ready.</p>
+            </div>
+
+            <div class="wishlist-grid" id="wishlist-grid"></div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="footer-logo">Dotty's World</div>
+        <p>Made of dots &amp; love <span class="footer-heart">♡</span></p>
+        <p>© 2026 Dotty. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Storage helpers
+
+        function readStorage(key, fallback) {
+            try {
+                const value = JSON.parse(localStorage.getItem(key));
+                return value ?? fallback;
+            } catch (error) {
+                return fallback;
+            }
+        }
+
+        function getCart() {
+            const cart = readStorage('dottyCart', []);
+            return Array.isArray(cart) ? cart : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('dottyCart', JSON.stringify(cart));
+        }
+
+        function getWishlist() {
+            const list = readStorage('dottyWishlist', []);
+            return Array.isArray(list) ? list : [];
+        }
+
+        function saveWishlist(list) {
+            localStorage.setItem('dottyWishlist', JSON.stringify(list));
+        }
+
+        function money(value) {
+            return 'OMR ' + (Number(value) || 0).toFixed(3);
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? '').replace(/[&<>"']/g, character => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[character]);
+        }
+
+        // Default images for products already used in shop.html
+
+        const productImages = {
+            'Sweet Bracelet':
+                'https://images.unsplash.com/photo-1576021182211-9ea8dced3690?auto=format&fit=crop&w=500&q=80',
+            'Little Diary':
+                'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=500&q=80',
+            'Cozy Mug':
+                'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=500&q=80',
+            'Golden Little Charm':
+                'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=500&q=80',
+            'Dreamy Notebook':
+                'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=500&q=80',
+            'Warm Hug Candle':
+                'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=500&q=80',
+            'Pretty Everyday Pick':
+                'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=500&q=80',
+            'Little Home Treasure':
+                'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=500&q=80'
+        };
+
+        function getProductImage(item) {
+            return item.image || productImages[item.name] ||
+                'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=500&q=80';
+        }
+
+        // Navigation counter
+
+        function updateNavCount() {
+            const total = getCart().reduce((sum, item) => {
+                return sum + Math.max(0, Number(item.quantity) || 0);
+            }, 0);
+
+            document.getElementById('nav-cart-count').textContent =
+                total ? '(' + total + ')' : '';
+        }
+
+        // Tabs
+
+        const cartTab = document.getElementById('cart-tab');
+        const wishlistTab = document.getElementById('wishlist-tab');
+        const cartPanel = document.getElementById('cart-panel');
+        const wishlistPanel = document.getElementById('wishlist-panel');
+
+        function showTab(tabName) {
+            const showCart = tabName === 'cart';
+
+            cartTab.classList.toggle('active', showCart);
+            wishlistTab.classList.toggle('active', !showCart);
+
+            cartTab.setAttribute('aria-selected', String(showCart));
+            wishlistTab.setAttribute('aria-selected', String(!showCart));
+
+            cartPanel.hidden = !showCart;
+            wishlistPanel.hidden = showCart;
+        }
+
+        cartTab.addEventListener('click', () => showTab('cart'));
+        wishlistTab.addEventListener('click', () => showTab('wishlist'));
+
+        // Empty state
+
+        function emptyState(icon, title, message, linkText, href) {
+            return `
+                <div class="empty-state">
+                    <div class="empty-icon">${icon}</div>
+                    <h3>${title}</h3>
+                    <p>${message}</p>
+                    <a class="primary-btn" href="${href}">${linkText}</a>
+                </div>
+            `;
+        }
+
+        // Render cart
+
+        function renderCart() {
+            const cart = getCart();
+            const container = document.getElementById('cart-items');
+
+            if (cart.length === 0) {
+                container.innerHTML = emptyState(
+                    '♡',
+                    'Your basket is waiting.',
+                    'You have no little treasures here yet. Explore our shop and find something lovely.',
+                    'EXPLORE THE SHOP',
+                    'shop.html'
+                );
+            } else {
+                container.innerHTML = cart.map((item, index) => {
+                    const name = escapeHTML(item.name || 'Lovely Item');
+                    const color = item.color
+                        ? escapeHTML(item.color)
+                        : '';
+                    const quantity = Math.max(
+                        1,
+                        Math.min(99, Number(item.quantity) || 1)
+                    );
+                    const price = Math.max(0, Number(item.price) || 0);
+                    const image = escapeHTML(getProductImage(item));
+
+                    return `
+                        <article class="cart-item">
+                            <div class="item-image">
+                                <img src="${image}" alt="${name}"
+                                     loading="lazy"
+                                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=500&q=80';">
+                            </div>
+
+                            <div class="item-content">
+                                <span class="item-category">DOTTY'S LITTLE FINDS</span>
+                                <h3>${name}</h3>
+                                ${color ? `<p class="item-variant">Color: ${color}</p>` : ''}
+
+                                <div class="item-bottom">
+                                    <span class="item-price">${money(price * quantity)}</span>
+
+                                    <div class="item-actions">
+                                        <div class="quantity-control">
+                                            <button type="button"
+                                                data-action="decrease"
+                                                data-index="${index}"
+                                                aria-label="Decrease quantity">−</button>
+
+                                            <span>${quantity}</span>
+
+                                            <button type="button"
+                                                data-action="increase"
+                                                data-index="${index}"
+                                                aria-label="Increase quantity">+</button>
+                                        </div>
+
+                                        <button type="button"
+                                            class="text-action"
+                                            data-action="remove"
+                                            data-index="${index}">
+                                            Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            }
+
+            const itemCount = cart.reduce((sum, item) => {
+                return sum + Math.max(0, Number(item.quantity) || 0);
+            }, 0);
+
+            const subtotal = cart.reduce((sum, item) => {
+                const quantity = Math.max(0, Number(item.quantity) || 0);
+                const price = Math.max(0, Number(item.price) || 0);
+                return sum + price * quantity;
+            }, 0);
+
+            document.getElementById('summary-items').textContent = itemCount;
+            document.getElementById('summary-subtotal').textContent = money(subtotal);
+            document.getElementById('summary-total').textContent = money(subtotal);
+
+            updateNavCount();
+        }
+
+        // Cart actions
+
+        document.getElementById('cart-items').addEventListener('click', event => {
+            const button = event.target.closest('button[data-action]');
+            if (!button) return;
+
+            const index = Number(button.dataset.index);
+            const cart = getCart();
+
+            if (!Number.isInteger(index) || !cart[index]) return;
+
+            const action = button.dataset.action;
+
+            if (action === 'increase') {
+                cart[index].quantity = Math.min(
+                    99,
+                    (Number(cart[index].quantity) || 1) + 1
+                );
+            }
+
+            if (action === 'decrease') {
+                cart[index].quantity = Math.max(
+                    1,
+                    (Number(cart[index].quantity) || 1) - 1
+                );
+            }
+
+            if (action === 'remove') {
+                cart.splice(index, 1);
+            }
+
+            saveCart(cart);
+            renderCart();
+        });
+
+        // Wishlist
+
+        function renderWishlist() {
+            const list = getWishlist();
+            const container = document.getElementById('wishlist-grid');
+
+            if (list.length === 0) {
+                container.innerHTML = emptyState(
+                    '♡',
+                    'A little space for your favorites.',
+                    'Tap a heart on a product to save it here for later.',
+                    'DISCOVER PRODUCTS',
+                    'shop.html'
+                );
+                return;
+            }
+
+            container.innerHTML = list.map((item, index) => {
+                const name = escapeHTML(item.name || 'Lovely Item');
+                const price = Math.max(0, Number(item.price) || 0);
+                const image = escapeHTML(getProductImage(item));
+
+                return `
+                    <article class="wishlist-card">
+                        <div class="wishlist-image">
+                            <img src="${image}" alt="${name}"
+                                 loading="lazy"
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=500&q=80';">
+
+                            <button class="remove-favorite"
+                                type="button"
+                                data-wishlist-action="remove"
+                                data-index="${index}"
+                                aria-label="Remove ${name} from wishlist">♥</button>
+                        </div>
+
+                        <div class="wishlist-info">
+                            <h3>${name}</h3>
+                            <p class="wishlist-price">${money(price)}</p>
+
+                            <button class="primary-btn"
+                                type="button"
+                                data-wishlist-action="add"
+                                data-index="${index}">
+                                ADD TO CART ♡
+                            </button>
+
+                            <button class="secondary-btn"
+                                type="button"
+                                data-wishlist-action="remove"
+                                data-index="${index}">
+                                Remove from Wishlist
+                            </button>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        // Wishlist actions
+
+        document.getElementById('wishlist-grid').addEventListener('click', event => {
+            const button = event.target.closest('button[data-wishlist-action]');
+            if (!button) return;
+
+            const index = Number(button.dataset.index);
+            const list = getWishlist();
+
+            if (!Number.isInteger(index) || !list[index]) return;
+
+            const action = button.dataset.wishlistAction;
+
+            if (action === 'remove') {
+                list.splice(index, 1);
+                saveWishlist(list);
+                renderWishlist();
+                return;
+            }
+
+            if (action === 'add') {
+                const item = list[index];
+                const cart = getCart();
+
+                const existing = cart.find(cartItem =>
+                    cartItem.name === item.name &&
+                    (cartItem.color || '') === (item.color || '')
+                );
+
+                if (existing) {
+                    existing.quantity =
+                        (Number(existing.quantity) || 0) + 1;
+                } else {
+                    cart.push({
+                        name: item.name,
+                        price: Number(item.price) || 0,
+                        quantity: 1,
+                        color: item.color || ''
+                    });
+                }
+
+                saveCart(cart);
+                renderCart();
+                showTab('cart');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Demo checkout
+
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            if (getCart().length === 0) {
+                alert('Your cart is empty. Let us find you something lovely! ♡');
+                return;
+            }
+
+            alert(
+                'Your cart is ready! ♡\n\n' +
+                'This is a demo store, so online payment is not enabled yet.'
+            );
+        });
+
+        // Initial render
+
+        renderCart();
+        renderWishlist();
+
+        // Refresh display if storage changes in another tab
+
+        window.addEventListener('storage', event => {
+            if (event.key === 'dottyCart' || event.key === null) {
+                renderCart();
+            }
+
+            if (event.key === 'dottyWishlist' || event.key === null) {
+                renderWishlist();
+            }
+        });
+    </script>
+
+</body>
+</html>

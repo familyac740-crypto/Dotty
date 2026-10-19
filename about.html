@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9F3">
+  <title>About & Contact | Dotty's World ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #F8DDE3;
+      --pink-dark: #EFBCC8;
+      --pink-accent: #B96F83;
+      --beige: #F3E7D7;
+      --cream: #FFF9F3;
+      --mocha: #C6A18D;
+      --brown: #795548;
+      --chocolate: #5B382B;
+      --white: #FFFFFF;
+      --border: #EAD9CC;
+      --shadow: 0 18px 45px rgba(91, 56, 43, .08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--cream);
+      color: var(--chocolate);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body, button, input, textarea, select {
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    button, a, input, textarea {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible, a:focus-visible, input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--pink-accent);
+      outline-offset: 4px;
+    }
+
+    .announcement {
+      padding: 8px 15px;
+      text-align: center;
+      background: var(--chocolate);
+      color: var(--cream);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .main-nav {
+      width: 100%;
+      min-height: 82px;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      background: rgba(255, 249, 243, .96);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 29px;
+      color: var(--brown);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+
+    .logo span {
+      color: #D995A7;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brown);
+      white-space: nowrap;
+      transition: color .25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--pink-accent);
+    }
+
+    .nav-heart {
+      font-size: 19px;
+      color: var(--pink-accent);
+    }
+
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 390px;
+      padding: 82px 8%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background-color: var(--pink);
+      background-image: radial-gradient(var(--mocha) 1.5px, transparent 2px);
+      background-size: 30px 30px;
+      isolation: isolate;
+    }
+
+    .page-hero::before,
+    .page-hero::after {
+      content: "♡";
+      position: absolute;
+      z-index: -1;
+      color: rgba(185, 111, 131, .28);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .page-hero::before {
+      font-size: 180px;
+      left: 8%;
+      top: 20px;
+      transform: rotate(-18deg);
+    }
+
+    .page-hero::after {
+      content: "✿";
+      font-size: 150px;
+      right: 8%;
+      bottom: 4px;
+      transform: rotate(15deg);
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      animation: rise-in .8s ease both;
+    }
+
+    .mini-title {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--brown);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--chocolate);
+    }
+
+    .page-hero h1 em {
+      color: var(--pink-accent);
+      font-style: normal;
+    }
+
+    .page-hero p {
+      max-width: 570px;
+      margin: auto;
+      font-size: 15px;
+      color: var(--brown);
+      line-height: 2;
+    }
+
+    .decorative-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      padding: 24px 15px;
+      color: var(--mocha);
+      letter-spacing: 5px;
+    }
+
+    .section {
+      padding: 76px 8%;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--pink-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 47px);
+      line-height: 1.2;
+      margin: 12px 0;
+    }
+
+    .section-heading p {
+      max-width: 560px;
+      margin: 0 auto;
+      color: #8D7168;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .about-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .about-art {
+      min-height: 430px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-radius: 48% 48% 25px 25px;
+      background: linear-gradient(145deg, #F8DDE3, #F3E7D7);
+      overflow: hidden;
+    }
+
+    .about-art::before,
+    .about-art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(121, 85, 72, .23);
+      border-radius: 50%;
+      width: 300px;
+      height: 300px;
+    }
+
+    .about-art::after {
+      width: 220px;
+      height: 220px;
+    }
+
+    .art-sparkle {
+      position: absolute;
+      color: var(--pink-accent);
+      font-size: 28px;
+    }
+
+    .sparkle-one { top: 19%; left: 18%; }
+    .sparkle-two { right: 16%; top: 31%; font-size: 20px; }
+    .sparkle-three { bottom: 18%; left: 23%; font-size: 22px; }
+
+    .art-center {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(255, 249, 243, .84);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .art-center .big-heart {
+      font-size: 65px;
+      color: var(--pink-accent);
+      line-height: 1.2;
+    }
+
+    .art-center span:last-child {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      margin-top: 5px;
+    }
+
+    .about-copy h2 {
+      font-size: clamp(34px, 4vw, 46px);
+      line-height: 1.2;
+      margin: 13px 0 22px;
+    }
+
+    .about-copy h2 em {
+      color: var(--pink-accent);
+      font-style: normal;
+    }
+
+    .about-copy p {
+      font-size: 14px;
+      color: #80665D;
+      margin-bottom: 17px;
+      line-height: 2;
+    }
+
+    .signature {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      color: var(--pink-accent);
+      font-family: 'DM Serif Display', serif;
+      font-size: 21px;
+    }
+
+    .values-section {
+      background: #FFF2F4;
+    }
+
+    .values-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .value-card {
+      background: var(--cream);
+      border: 1px solid #F1DCE1;
+      border-radius: 22px;
+      padding: 32px 23px;
+      text-align: center;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+    }
+
+    .value-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 17px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--pink);
+      font-size: 29px;
+    }
+
+    .value-card:nth-child(2) .value-icon { background: var(--beige); }
+    .value-card:nth-child(3) .value-icon { background: #E8D5C8; }
+
+    .value-card h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .value-card p {
+      color: #8D7168;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .contact-section {
+      background: var(--cream);
+    }
+
+    .contact-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .contact-info {
+      padding: 42px 34px;
+      border-radius: 25px;
+      background: var(--chocolate);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::after {
+      content: "♡";
+      position: absolute;
+      right: -10px;
+      bottom: -70px;
+      font-family: Georgia, serif;
+      font-size: 220px;
+      color: rgba(248, 221, 227, .08);
+      pointer-events: none;
+    }
+
+    .contact-info .section-label {
+      color: var(--pink-dark);
+    }
+
+    .contact-info h2 {
+      font-size: 37px;
+      line-height: 1.2;
+      margin: 13px 0 16px;
+    }
+
+    .contact-info > p {
+      color: #F0DDD5;
+      font-size: 13px;
+      line-height: 2;
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin: 22px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .detail-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(248, 221, 227, .15);
+      color: var(--pink);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+
+    .contact-detail h3 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .contact-detail p,
+    .contact-detail a {
+      font-size: 12px;
+      color: #F0DDD5;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-form-wrap {
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form-wrap h2 {
+      font-size: 32px;
+      margin-bottom: 7px;
+    }
+
+    .form-intro {
+      font-size: 13px;
+      color: #92766C;
+      margin-bottom: 26px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--brown);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #EAD9CC;
+      border-radius: 12px;
+      background: #FFFCF9;
+      color: var(--chocolate);
+      outline: none;
+      font-size: 13px;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--pink-accent);
+      box-shadow: 0 0 0 3px rgba(217, 149, 167, .15);
+    }
+
+    .form-group textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #B7A29A;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 15px 24px;
+      border: 2px solid var(--brown);
+      border-radius: 35px;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      transition: .3s;
+    }
+
+    .submit-button:hover {
+      background: var(--cream);
+      color: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    .form-note {
+      font-size: 11px;
+      line-height: 1.8;
+      color: #9B8379;
+      margin-top: 13px;
+      text-align: center;
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 15px;
+      padding: 12px 15px;
+      border-radius: 12px;
+      background: #F8DDE3;
+      color: var(--chocolate);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .form-status.visible {
+      display: block;
+    }
+
+    .little-note {
+      padding: 45px 8%;
+      text-align: center;
+      background: var(--beige);
+    }
+
+    .little-note p {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(23px, 3vw, 34px);
+      color: var(--brown);
+    }
+
+    .little-note span {
+      color: var(--pink-accent);
+    }
+
+    footer {
+      background: var(--chocolate);
+      color: var(--cream);
+      padding: 40px 8% 24px;
+    }
+
+    .footer-main {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 249, 243, .18);
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .footer-logo span {
+      color: var(--pink-dark);
+    }
+
+    .footer-main p {
+      font-size: 12px;
+      color: #EAD9CC;
+      margin-top: 5px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--pink-dark);
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: #EAD9CC;
+      font-size: 11px;
+    }
+
+    .footer-heart {
+      color: var(--pink-dark);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 50;
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--brown);
+      color: white;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: .3s;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .main-nav {
+        padding: 17px 5%;
+        gap: 18px;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .about-layout {
+        gap: 35px;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .announcement {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+      }
+
+      .main-nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 17px 5%;
+      }
+
+      .logo {
+        font-size: 28px;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 13px 20px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+      }
+
+      .page-hero {
+        min-height: 340px;
+        padding: 65px 6%;
+      }
+
+      .page-hero::before {
+        left: -25px;
+        font-size: 110px;
+      }
+
+      .page-hero::after {
+        right: -20px;
+        font-size: 100px;
+      }
+
+      .section {
+        padding: 58px 6%;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-art {
+        min-height: 330px;
+      }
+
+      .art-center {
+        width: 185px;
+        height: 185px;
+      }
+
+      .art-center .big-heart {
+        font-size: 52px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+        max-width: 430px;
+      }
+
+      .contact-form-wrap {
+        padding: 28px 22px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .footer-main {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav-links {
+        gap: 12px 14px;
+      }
+
+      .nav-link {
+        font-size: 11px;
+      }
+
+      .page-hero h1 {
+        font-size: 42px;
+      }
+
+      .contact-info,
+      .contact-form-wrap {
+        padding: 25px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    WELCOME TO OUR LITTLE WORLD OF DOTS &amp; LOVE ♡
+  </div>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="Dotty's World home">D<span>o</span>tty.</a>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="product.html" class="nav-link">Product</a>
+      <a href="cart.html" class="nav-link">Cart ♡</a>
+      <a href="about.html" class="nav-link active" aria-current="page">About &amp; Contact</a>
+    </div>
+    <span class="nav-heart" aria-hidden="true">♡</span>
+  </nav>
+
+  <main>
+    <section class="page-hero" id="top">
+      <div class="hero-inner">
+        <span class="mini-title">A LITTLE ABOUT OUR WORLD</span>
+        <h1>Our Story, <em>Our Heart.</em></h1>
+        <p>
+          Every little detail has a story, and every story deserves a little love.
+          Welcome to the heart of Dotty's World.
+        </p>
+      </div>
+    </section>
+
+    <div class="decorative-line" aria-hidden="true">· · · ♡ · · ·</div>
+
+    <section class="section" id="about">
+      <div class="about-layout">
+        <div class="about-art reveal" aria-label="Decorative heart illustration">
+          <span class="art-sparkle sparkle-one" aria-hidden="true">✦</span>
+          <span class="art-sparkle sparkle-two" aria-hidden="true">♡</span>
+          <span class="art-sparkle sparkle-three" aria-hidden="true">✧</span>
+          <div class="art-center">
+            <span class="big-heart" aria-hidden="true">♡</span>
+            <span>Dotty's World</span>
+          </div>
+        </div>
+
+        <div class="about-copy reveal">
+          <span class="section-label">GET TO KNOW US</span>
+          <h2>A tiny corner of the world, made with <em>love.</em></h2>
+          <p>
+            Dotty's World is a sweet little space inspired by charming details,
+            soft colors, and the simple things that make everyday life feel special.
+          </p>
+          <p>
+            Our world brings together a cozy cream background, gentle pink touches,
+            warm mocha shades, and a sprinkle of dots. We believe that thoughtful
+            details can turn an ordinary moment into something memorable.
+          </p>
+          <p>
+            Whether you're browsing for a little inspiration or simply stopping by,
+            we hope this space makes you smile and feel right at home.
+          </p>
+          <div class="signature">With love, Dotty's World <span>♡</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section values-section" id="our-values">
+      <div class="section-heading reveal">
+        <span class="section-label">THE LITTLE THINGS</span>
+        <h2>What makes our world special?</h2>
+        <p>
+          A few little ideas guide everything about our cozy corner.
+          Simple, thoughtful, and always full of heart.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">♡</div>
+          <h3>Sweet Details</h3>
+          <p>We love the little touches that make an experience feel thoughtful, charming, and unique.</p>
+        </article>
+
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">✿</div>
+          <h3>Made with Love</h3>
+          <p>From our soft palette to our welcoming words, everything is inspired by a little love.</p>
+        </article>
+
+        <article class="value-card reveal">
+          <div class="value-icon" aria-hidden="true">☕</div>
+          <h3>Soft &amp; Cozy</h3>
+          <p>Warm mocha, gentle pink, and creamy beige create a calm and cozy little world.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="section-heading reveal">
+        <span class="section-label">SAY HELLO</span>
+        <h2>We'd love to hear from you.</h2>
+        <p>
+          Have a question, an idea, or just want to say hello?
+          Send us a little message using the form below.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <aside class="contact-info reveal">
+          <span class="section-label">LET'S TALK</span>
+          <h2>Keep in touch ♡</h2>
+          <p>
+            Your thoughts matter to us. Choose the best way to reach out,
+            or leave your message in the form and we'll be happy to hear from you.
+          </p>
+
+          <div class="contact-detail">
+            <div class="detail-icon" aria-hidden="true">✉</div>
+            <div>
+              <h3>Email</h3>
+              <p>Replace with your email address</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="detail-icon" aria-hidden="true">♡</div>
+            <div>
+              <h3>Social Media</h3>
+              <p>Add your Instagram or social link here</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="detail-icon" aria-hidden="true">☼</div>
+            <div>
+              <h3>Our Little Promise</h3>
+              <p>A warm welcome and a thoughtful reply.</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="contact-form-wrap reveal">
+          <h2>Send a message</h2>
+          <p class="form-intro">Fill in the little details below.</p>
+
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input id="name" name="name" type="text" placeholder="Lovely name" autocomplete="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email *</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="General question">A little question</option>
+                <option value="Product question">Product question</option>
+                <option value="Order help">Help with an order</option>
+                <option value="Feedback">Feedback or suggestion</option>
+                <option value="Just saying hello">Just saying hello ♡</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message *</label>
+              <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button class="submit-button" type="submit">SEND YOUR MESSAGE ♡</button>
+
+            <p class="form-note">
+              This is a front-end demo form. It does not send messages to an inbox until
+              you connect it to an email service or backend.
+            </p>
+
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="little-note">
+      <p>A little kindness makes the world <span>lovelier.</span> ♡</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div>
+        <a href="index.html" class="footer-logo">Dotty's <span>World</span></a>
+        <p>Made of dots &amp; love ♡</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="product.html">Product</a>
+        <a href="cart.html">Cart</a>
+        <a href="#about">Our Story</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> Dotty's World. All rights reserved.</p>
+      <p>Designed with <span class="footer-heart">♡</span> and a little sprinkle of dots.</p>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+  <script>
+    // Keep the copyright year current.
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Show the back-to-top button after scrolling.
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 350) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    // Reveal page sections gently as they enter the viewport.
+    const revealItems = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach((item) => revealObserver.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('visible'));
+    }
+
+    // Demonstration-only form handling. No message is sent to a server.
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const visitorName = document.getElementById('name').value.trim();
+
+      formStatus.textContent =
+        `Thank you, ${visitorName}! ♡ Your form looks good, but this demo page is not connected to an inbox yet. Connect an email service or backend to receive messages.`;
+
+      formStatus.classList.add('visible');
+    });
+  </script>
+</body>
+</html>

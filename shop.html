@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | Dotty's World ♡</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #F8DDE3;
+            --pink-dark: #EFBCC8;
+            --beige: #F3E7D7;
+            --cream: #FFF9F3;
+            --mocha: #C6A18D;
+            --brown: #795548;
+            --chocolate: #5B382B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--cream);
+            color: var(--chocolate);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* Navigation */
+
+        .main-nav {
+            width: 100%;
+            min-height: 85px;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            background: var(--cream);
+            border-bottom: 1px solid #EAD9CC;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 30px;
+            color: var(--brown);
+            letter-spacing: 2px;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: #D995A7;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--brown);
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #B96F83;
+        }
+
+        /* Shop Hero */
+
+        .shop-hero {
+            padding: 75px 8% 70px;
+            text-align: center;
+            background-color: var(--pink);
+            background-image: radial-gradient(
+                var(--mocha) 1.8px,
+                transparent 2px
+            );
+            background-size: 32px 32px;
+        }
+
+        .mini-title {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--brown);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+        }
+
+        .shop-hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(45px, 7vw, 70px);
+            line-height: 1.2;
+            color: var(--chocolate);
+            margin-bottom: 15px;
+        }
+
+        .shop-hero p {
+            color: var(--brown);
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 470px;
+            margin: auto;
+        }
+
+        .hero-heart {
+            color: #B96F83;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        /* Decorative Divider */
+
+        .decorative-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 22px;
+            color: var(--mocha);
+            letter-spacing: 5px;
+        }
+
+        /* Shop Intro */
+
+        .shop-intro {
+            text-align: center;
+            padding: 30px 8% 25px;
+        }
+
+        .section-label {
+            color: #B96F83;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .shop-intro h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(30px, 4vw, 42px);
+            margin: 14px 0;
+        }
+
+        .shop-intro p {
+            max-width: 500px;
+            margin: auto;
+            font-size: 14px;
+            line-height: 2;
+            color: var(--brown);
+        }
+
+        /* Category Filters */
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 25px 6% 40px;
+        }
+
+        .category-btn {
+            border: 1px solid var(--pink-dark);
+            background: transparent;
+            color: var(--brown);
+            padding: 11px 23px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--brown);
+            border-color: var(--brown);
+            color: var(--cream);
+        }
+
+        /* Products */
+
+        .products-section {
+            padding: 10px 8% 90px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .products-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 28px;
+        }
+
+        .products-heading h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 29px;
+        }
+
+        .products-count {
+            font-size: 12px;
+            color: var(--brown);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border: 1px solid #F0E4DA;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px rgba(91, 56, 43, 0.09);
+        }
+
+        .product-image {
+            height: 230px;
+            position: relative;
+            overflow: hidden;
+            background: var(--beige);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            background: var(--pink);
+            color: var(--brown);
+            border-radius: 20px;
+            padding: 7px 11px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 50%;
+            background: var(--cream);
+            color: #B96F83;
+            font-size: 19px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .favorite-btn:hover,
+        .favorite-btn.liked {
+            background: #B96F83;
+            color: white;
+        }
+
+        .product-info {
+            padding: 18px 16px 20px;
+        }
+
+        .product-category {
+            font-size: 10px;
+            color: #B96F83;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .product-info h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 19px;
+            font-weight: 400;
+            margin: 8px 0;
+        }
+
+        .product-description {
+            font-size: 12px;
+            color: var(--brown);
+            line-height: 1.8;
+            min-height: 42px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-top: 17px;
+        }
+
+        .product-price {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--chocolate);
+            white-space: nowrap;
+        }
+
+        .add-btn {
+            border: 1px solid var(--brown);
+            background: var(--brown);
+            color: var(--cream);
+            border-radius: 25px;
+            padding: 10px 13px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .empty-message {
+            display: none;
+            text-align: center;
+            color: var(--brown);
+            padding: 45px 10px;
+            grid-column: 1 / -1;
+            line-height: 2;
+        }
+
+        /* Little Note */
+
+        .shop-note {
+            margin: 0 8% 85px;
+            padding: 35px 25px;
+            text-align: center;
+            background: var(--beige);
+            border-radius: 22px;
+        }
+
+        .shop-note .note-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .shop-note h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .shop-note p {
+            color: var(--brown);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* Footer */
+
+        footer {
+            background: var(--chocolate);
+            color: var(--cream);
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            letter-spacing: 3px;
+        }
+
+        footer p {
+            font-size: 12px;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        .footer-heart {
+            color: var(--pink-dark);
+        }
+
+        /* Tablet */
+
+        @media (max-width: 1050px) {
+            .main-nav {
+                padding-left: 5%;
+                padding-right: 5%;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 23px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .product-image {
+                height: 260px;
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 760px) {
+            .main-nav {
+                padding: 18px 5%;
+                flex-direction: column;
+                gap: 22px;
+            }
+
+            .logo {
+                font-size: 29px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 18px 25px;
+            }
+
+            .nav-link {
+                font-size: 12px;
+            }
+
+            .shop-hero {
+                padding: 65px 6%;
+            }
+
+            .mini-title {
+                font-size: 10px;
+                letter-spacing: 1.5px;
+            }
+
+            .shop-intro {
+                padding: 25px 7%;
+            }
+
+            .categories {
+                padding-bottom: 30px;
+                gap: 9px;
+            }
+
+            .category-btn {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .products-section {
+                padding: 10px 6% 65px;
+            }
+
+            .products-grid {
+                gap: 15px;
+            }
+
+            .product-image {
+                height: 210px;
+            }
+
+            .product-info {
+                padding: 14px 12px 16px;
+            }
+
+            .product-info h3 {
+                font-size: 17px;
+            }
+
+            .product-description {
+                font-size: 11px;
+            }
+
+            .product-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .add-btn {
+                width: 100%;
+            }
+
+            .shop-note {
+                margin: 0 6% 65px;
+                padding: 30px 18px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 15px 18px;
+            }
+
+            .nav-link {
+                font-size: 11px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 280px;
+            }
+
+            .product-bottom {
+                align-items: center;
+                flex-direction: row;
+            }
+
+            .add-btn {
+                width: auto;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="main-nav">
+        <a href="index.html" class="logo">D<span>o</span>tty.</a>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="shop.html" class="nav-link active">Shop</a>
+            <a href="product.html" class="nav-link">Product</a>
+            <a href="cart.html" class="nav-link">Cart ♡ <span id="cart-count"></span></a>
+            <a href="about.html" class="nav-link">About &amp; Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="shop-hero">
+        <div class="mini-title">A LITTLE SOMETHING FOR YOU</div>
+
+        <h1>Our Little Shop ♡</h1>
+
+        <p>
+            Discover lovely little things made to bring
+            happiness to your everyday moments.
+            Pick your favorites and add a little sweetness to your world.
+        </p>
+
+        <div class="hero-heart">♥ &nbsp; ♥ &nbsp; ♥</div>
+    </section>
+
+    <div class="decorative-line">· · · ♡ · · ·</div>
+
+    <!-- Intro -->
+
+    <section class="shop-intro">
+        <span class="section-label">MADE FOR YOUR HAPPY DAYS</span>
+
+        <h2>Little Things, Big Smiles.</h2>
+
+        <p>
+            From sweet accessories to cozy little treasures,
+            find something special that feels just like you.
+        </p>
+    </section>
+
+    <!-- Categories -->
+
+    <div class="categories" aria-label="Filter products">
+        <button class="category-btn active" data-category="all">
+            All Items
+        </button>
+
+        <button class="category-btn" data-category="accessories">
+            Accessories
+        </button>
+
+        <button class="category-btn" data-category="stationery">
+            Stationery
+        </button>
+
+        <button class="category-btn" data-category="lifestyle">
+            Lifestyle
+        </button>
+    </div>
+
+    <!-- Products -->
+
+    <section class="products-section" id="products">
+
+        <div class="products-heading">
+            <h2>Our Favorites ♡</h2>
+            <span class="products-count" id="products-count">8 lovely finds</span>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+
+            <!-- Product 1 -->
+
+            <article class="product-card" data-category="accessories">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1576021182211-9ea8dced3690?auto=format&fit=crop&w=700&q=80"
+                        alt="Delicate jewelry"
+                        loading="lazy"
+                    >
+
+                    <span class="product-tag">BESTSELLER</span>
+
+                    <button class="favorite-btn" aria-label="Add bracelet to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Accessories</span>
+                    <h3>Sweet Bracelet</h3>
+
+                    <p class="product-description">
+                        A delicate little accessory for your everyday look.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 4.500</span>
+                        <button class="add-btn" data-name="Sweet Bracelet" data-price="4.500">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 2 -->
+
+            <article class="product-card" data-category="stationery">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=700&q=80"
+                        alt="Notebook and stationery"
+                        loading="lazy"
+                    >
+
+                    <span class="product-tag">LOVELY PICK</span>
+
+                    <button class="favorite-btn" aria-label="Add notebook to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Stationery</span>
+                    <h3>Little Diary</h3>
+
+                    <p class="product-description">
+                        A cozy place for your thoughts, dreams and plans.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 3.000</span>
+                        <button class="add-btn" data-name="Little Diary" data-price="3.000">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 3 -->
+
+            <article class="product-card" data-category="lifestyle">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=700&q=80"
+                        alt="Cozy ceramic mug"
+                        loading="lazy"
+                    >
+
+                    <span class="product-tag">COZY PICK</span>
+
+                    <button class="favorite-btn" aria-label="Add mug to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Lifestyle</span>
+                    <h3>Cozy Mug</h3>
+
+                    <p class="product-description">
+                        Your favorite drink deserves a lovely little cup.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 5.000</span>
+                        <button class="add-btn" data-name="Cozy Mug" data-price="5.000">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 4 -->
+
+            <article class="product-card" data-category="accessories">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80"
+                        alt="Elegant jewelry accessory"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn" aria-label="Add jewelry to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Accessories</span>
+                    <h3>Golden Little Charm</h3>
+
+                    <p class="product-description">
+                        A tiny golden detail to make your day shine.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 6.000</span>
+                        <button class="add-btn" data-name="Golden Little Charm" data-price="6.000">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 5 -->
+
+            <article class="product-card" data-category="stationery">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80"
+                        alt="Pretty notebook"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn" aria-label="Add notebook to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Stationery</span>
+                    <h3>Dreamy Notebook</h3>
+
+                    <p class="product-description">
+                        For little ideas, big dreams and lovely notes.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 2.500</span>
+                        <button class="add-btn" data-name="Dreamy Notebook" data-price="2.500">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 6 -->
+
+            <article class="product-card" data-category="lifestyle">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=700&q=80"
+                        alt="Cozy candle"
+                        loading="lazy"
+                    >
+
+                    <span class="product-tag">SOFT & COZY</span>
+
+                    <button class="favorite-btn" aria-label="Add candle to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Lifestyle</span>
+                    <h3>Warm Hug Candle</h3>
+
+                    <p class="product-description">
+                        A warm, cozy touch for your favorite little corner.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 4.000</span>
+                        <button class="add-btn" data-name="Warm Hug Candle" data-price="4.000">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 7 -->
+
+            <article class="product-card" data-category="accessories">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80"
+                        alt="Fashion accessory inspiration"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn" aria-label="Add accessory to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Accessories</span>
+                    <h3>Pretty Everyday Pick</h3>
+
+                    <p class="product-description">
+                        A sweet finishing touch for your everyday style.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 3.500</span>
+                        <button class="add-btn" data-name="Pretty Everyday Pick" data-price="3.500">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Product 8 -->
+
+            <article class="product-card" data-category="lifestyle">
+                <div class="product-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=700&q=80"
+                        alt="Cozy home decor"
+                        loading="lazy"
+                    >
+
+                    <button class="favorite-btn" aria-label="Add home decor to favorites" aria-pressed="false">♡</button>
+                </div>
+
+                <div class="product-info">
+                    <span class="product-category">Lifestyle</span>
+                    <h3>Little Home Treasure</h3>
+
+                    <p class="product-description">
+                        A lovely detail to make your space feel like home.
+                    </p>
+
+                    <div class="product-bottom">
+                        <span class="product-price">OMR 7.000</span>
+                        <button class="add-btn" data-name="Little Home Treasure" data-price="7.000">
+                            Add to Cart +
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <p class="empty-message" id="empty-message">
+                No little treasures here just yet. ♡
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Little Note -->
+
+    <section class="shop-note">
+        <div class="note-icon">🎀</div>
+
+        <h2>A Little Treat, Just for You.</h2>
+
+        <p>
+            Life is made of little moments and little joys.
+            Thank you for being part of Dotty's World ♡
+        </p>
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="footer-logo">Dotty's World</div>
+
+        <p>
+            Made of dots &amp; love
+            <span class="footer-heart">♡</span>
+        </p>
+
+        <p>© 2026 Dotty. All rights reserved.</p>
+    </footer>
+
+    <!-- Shop Interactions -->
+
+    <script>
+        // Product category filters
+
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        const productsCount = document.getElementById('products-count');
+        const emptyMessage = document.getElementById('empty-message');
+
+        function filterProducts(category) {
+            let visibleCount = 0;
+
+            productCards.forEach(card => {
+                const matches =
+                    category === 'all' ||
+                    card.dataset.category === category;
+
+                card.style.display = matches ? '' : 'none';
+
+                if (matches) {
+                    visibleCount++;
+                }
+            });
+
+            productsCount.textContent =
+                visibleCount + (visibleCount === 1
+                    ? ' lovely find'
+                    : ' lovely finds');
+
+            emptyMessage.style.display =
+                visibleCount === 0 ? 'block' : 'none';
+        }
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                button.classList.add('active');
+                filterProducts(button.dataset.category);
+            });
+        });
+
+        // Favorites
+
+        document.querySelectorAll('.favorite-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const isLiked = button.classList.toggle('liked');
+
+                button.textContent = isLiked ? '♥' : '♡';
+                button.setAttribute('aria-pressed', String(isLiked));
+            });
+        });
+
+        // Shopping cart stored in the browser
+
+        function getCart() {
+            try {
+                const cart = JSON.parse(
+                    localStorage.getItem('dottyCart') || '[]'
+                );
+
+                return Array.isArray(cart) ? cart : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('dottyCart', JSON.stringify(cart));
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+
+            const total = cart.reduce((sum, item) => {
+                return sum + (Number(item.quantity) || 0);
+            }, 0);
+
+            document.getElementById('cart-count').textContent =
+                total > 0 ? '(' + total + ')' : '';
+        }
+
+        document.querySelectorAll('.add-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.dataset.name;
+                const price = Number(button.dataset.price);
+
+                const cart = getCart();
+                const existingItem = cart.find(item => item.name === name);
+
+                if (existingItem) {
+                    existingItem.quantity =
+                        (Number(existingItem.quantity) || 0) + 1;
+                } else {
+                    cart.push({
+                        name: name,
+                        price: price,
+                        quantity: 1
+                    });
+                }
+
+                saveCart(cart);
+                updateCartCount();
+
+                const originalText = 'Add to Cart +';
+
+                button.textContent = 'Added ♡';
+                button.style.background = '#B96F83';
+                button.style.borderColor = '#B96F83';
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    button.style.borderColor = '';
+                }, 1000);
+            });
+        });
+
+        updateCartCount();
+    </script>
+
+</body>
+</html>
